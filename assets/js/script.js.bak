@@ -39,13 +39,10 @@ const testimonialsModalFunc = function () {
 for (let i = 0; i < testimonialsItem.length; i++) {
 
   testimonialsItem[i].addEventListener("click", function () {
-	  alert(modalDataAndTime);
-
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-	alert(this.querySelector("[data-dateAndTime]").getAttribute("datetime"));
 	modalDataAndTime.innerHTML=this.querySelector("[data-dateAndTime]").getAttribute("datetime");
     testimonialsModalFunc();
 
@@ -86,9 +83,9 @@ const filterFunc = function (selectedValue) {
 
   for (let i = 0; i < filterItems.length; i++) {
 
-    if (selectedValue === "all") {
+    if (selectedValue === "all".toLowerCase()) {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (selectedValue === filterItems[i].dataset.category.toLowerCase()) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -104,6 +101,7 @@ let lastClickedBtn = filterBtn[0];
 for (let i = 0; i < filterBtn.length; i++) {
 
   filterBtn[i].addEventListener("click", function () {
+	console.log(this.innerText.toLowerCase())
 
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
